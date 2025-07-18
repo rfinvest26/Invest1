@@ -795,9 +795,8 @@
                 } else if (sectionId === 'form') {
                     this.navForm.classList.add('active');
                 } else if (sectionId === 'admin-panel') {
-                    // Note: admin-panel doesn't have a direct nav link in the current setup,
-                    // but it's important to ensure it's displayed if navigated to.
-                    this.displayApplications(); // Refresh table when admin panel is shown
+                    // This is the key fix: call displayApplications when showing admin panel
+                    this.displayApplications(); 
                 }
             },
 
@@ -819,7 +818,7 @@
                 if (password === CORRECT_PASSWORD) {
                     this.isAdminLoggedIn = true;
                     this.hideAdminModal();
-                    this.showSection('admin-panel'); // Show admin panel section
+                    this.showSection('admin-panel'); // Show admin panel section and trigger displayApplications inside it
                 } else {
                     alert('Неверный пароль');
                     this.adminPassword.value = '';
@@ -1033,3 +1032,4 @@
     </script>
 </body>
 </html>
+
